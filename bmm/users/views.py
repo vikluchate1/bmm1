@@ -17,6 +17,11 @@ def auth(request):
     }
     return render(request, "users/auth.html", context)
 
+def send_email(request):
+     
+    return render(request, "users/sendemail.html")
+    
+
 # def login(request):
 #     if request.method == "POST":
 #         form = UserLoginForm(data=request.POST)

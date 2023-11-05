@@ -29,7 +29,7 @@
     <header id = "main_bar"><img id = "logo" src="{% static 'logo/logo-medium-svgrepo-com.svg' %}">
       <h1>BMMSUPPORT</h1>
       {% if user.is_authenticated %}
-      <!-- <p  id = "username-label">{{ user.username }}</p> -->
+      <p  id = "username-label">{{ user.username }}</p>
       <a class="btn btn-primary" href="{% url 'users:logout' %}" role="button">Выход</a>
       {% else %}
       <a class="btn btn-primary" href="{% url 'users:login' %}" role="button">Вход</a>
@@ -57,14 +57,14 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img id = "ugolok_2" src="{% static 'img/locker.jpg' %}" class="d-block w-100">
+          <img id = "ugolok_2" src="{% static 'img/worker.jpg' %}" class="d-block w-100">
           <div class="carousel-caption d-none d-md-block">
             <h5>На связи только профессионалы</h5>
             <p class = "carus_opis">Вам помогают исключительно квалифицированные специасты.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img id = "ugolok_3" src="{% static 'img/proc.jpg' %}" class="d-block w-100">
+          <img id = "ugolok_3" src="{% static 'img/support.jpeg' %}" class="d-block w-100">
           <div class="carousel-caption d-none d-md-block">
             <h5>Круглосуточная поддержка</h5>
             <p class = "carus_opis">Мы на связи 24/7.</p>
@@ -118,12 +118,14 @@
     allow="camera;microphone;fullscreen;display-capture;screen-wake-lock"
     ></iframe>
   </div>
+  <a href="mailto:bmmsuppo@gmail.com"><h6>Отправьте нам письмо</h6></a>
+  <!-- <a href="{% url 'users:sendemail' %}"><h6>Отправьте нам письмо</h6></a> -->
   <footer class="mt-5 pt-5 pb-5 footer">
     <div class="container">
       <div class="row">
         <div class="col-lg-5 col-xs-12 about-company">
           <h2 class="about">О нас</h2>
-          <p class="pr-5 text-white-50">Компания с 30-ти летним опытом </p>
+          <p class="pr-5 text-white-50">Компания с 0-ти летним опытом </p>
           <p><a href="#"><i class="fa fa-facebook-square mr-1"></i></a><a href="#"><i class="fa fa-linkedin-square"></i></a></p>
         </div>
         <div class="col-lg-3 col-xs-12 links">
@@ -147,6 +149,7 @@
         </div>
       </div>
     </div>
+    
   </footer>
 
   </body>
