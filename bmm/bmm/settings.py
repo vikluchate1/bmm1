@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -71,6 +72,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'bmm.wsgi.application'
+ASGI_APPLICATION = 'bmm.asgi.application'
 
 
 # Database
@@ -141,3 +143,19 @@ EMAIL_HOST_PASSWORD = 'Cbtax8XS907qLr3K'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'default from email'
+
+REDIS_HOST = os.environ.get('REDIS_HOST', 'webrtc-redis-server')
+REDIS_PORT = os.environ.get('REDIS_PORT', '6379')
+CHANNEL_LAYERS = {
+    'default':{
+        'BACKEND':'channels_redis.core.RedisChannelLayer',
+        'CONFIG':{
+            "hosts": [(REDIS_HOST, REDIS_PORT)],
+        },
+    },
+}
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:8000"
+]

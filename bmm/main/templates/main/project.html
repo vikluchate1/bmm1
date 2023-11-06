@@ -10,11 +10,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,600;10..100,800&display=swap" rel="stylesheet">
-
+<script type="text/javascript" src="https://flashphoner.com/downloads/builds/flashphoner_client/wcs_api-2.0/current/flashphoner.js"></script>
 </head>
 <script src='https://<your-domain>/external_api.js'></script>
-  <script src='https://meet.jit.si/external_api.js'></script>
 <script type="text/javascript">
+
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
   var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -25,7 +25,7 @@
   s0.parentNode.insertBefore(s1,s0);
   })();
   </script>
-  <body>
+  <body onload="init_api()">
     <header id = "main_bar"><img id = "logo" src="{% static 'logo/logo-medium-svgrepo-com.svg' %}">
       <h1>BMMSUPPORT</h1>
       {% if user.is_authenticated %}
@@ -117,9 +117,9 @@
     src="https://vconf.edgecenter.ru/call/?roomId=serv0testroom123"
     allow="camera;microphone;fullscreen;display-capture;screen-wake-lock"
     ></iframe>
+    
   </div>
-  <a href="mailto:bmmsuppo@gmail.com"><h6>Отправьте нам письмо</h6></a>
-  <!-- <a href="{% url 'users:sendemail' %}"><h6>Отправьте нам письмо</h6></a> -->
+  <a href="{% url 'users:sendemail' %}"><h6>Отправьте нам письмо</h6></a>
   <footer class="mt-5 pt-5 pb-5 footer">
     <div class="container">
       <div class="row">
