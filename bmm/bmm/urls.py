@@ -17,15 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from main.views import index
-from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    # path('', login_required(index), name='index'),
-    path('users/', include('users.urls', namespace ='users')),
-    path('agora/', include('agora.urls', namespace ='agora') )
+    path('users/', include('users.urls', namespace='users')),
+    path('agora/', include('agora.urls', namespace='agora'))
 
 ]
 
