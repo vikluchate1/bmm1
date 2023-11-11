@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/static/logo.png" type="image/png" />
     <title>Video Call</title>
-    <script src="/bmm/static/js/call.js"></script>
-    <link rel="stylesheet" href="/bmm/static/css/style.css">
+    <script src="{% static 'js/call.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 
     <style>
@@ -29,7 +29,7 @@
 <body>
     <div>
         <div>
-            <!-- to input username and login -->
+             to input username and login 
             <div id="userName">
                 <div style="display: flex; flex-direction: column; align-items: center; width: 300px;">
                     <input placeholder="What should we call you?"
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <!-- to display current login user information  -->
+             to display current login user information  
             <div id="userInfo">
                 <div style="display: flex; flex-direction: column; align-items: center; width: 300px;">
                     <h1>Hello, <span id="nameHere"></span></h1>
@@ -48,7 +48,7 @@
 
             </div>
 
-            <!-- to make a call with name -->
+          
             <div id="call">
                 <div class="dialWrapper">
                     <input placeholder="Whom to call?" style="text-align:center; height: 50px; font-size: xx-large;"
@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-            <!-- to show incommming call and accept -->
+        
             <div id="answer">
                 <div class="incomingWrapper">
                     <div class="itemWrapper">
@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            <!-- to show outgoing call -->
+           
             <div id="calling">
                 <div class="incomingWrapper">
                     <div class="itemWrapper">
@@ -103,7 +103,7 @@
 
 
         
-<!-- to show call in progress call -->
+
             <div id="inCall">
                 <div class="incomingWrapper">
                     <div class="itemWrapper">
@@ -115,7 +115,7 @@
 
             <br>
 
-            <!-- to show local and remote video -->
+          
             <div id="videos">
                 <div style="position:absolute; top:0; right:0; padding-right: 20px; padding-top: 20px">
                     <video width="100px" id="localVideo" autoplay muted playsinline></video>

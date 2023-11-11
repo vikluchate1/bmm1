@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import dotenv
+dotenv.load_dotenv()
 from pathlib import Path
 import os
 
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'main',
+    'agora',
+    
 ]
 
 MIDDLEWARE = [
@@ -144,15 +147,11 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'default from email'
 
-REDIS_HOST = os.environ.get('REDIS_HOST', 'webrtc-redis-server')
-REDIS_PORT = os.environ.get('REDIS_PORT', '6379')
+
 CHANNEL_LAYERS = {
     'default':{
-        'BACKEND':'channels_redis.core.RedisChannelLayer',
-        'CONFIG':{
-            "hosts": [(REDIS_HOST, REDIS_PORT)],
-        },
-    },
+        'BACKEND':'channels.layers.InMemoryChannelLayer',
+    }
 }
 
 CORS_ALLOWED_ORIGINS = [

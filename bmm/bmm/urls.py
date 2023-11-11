@@ -25,6 +25,7 @@ urlpatterns = [
     path('', index, name='index'),
     # path('', login_required(index), name='index'),
     path('users/', include('users.urls', namespace ='users')),
+    path('agora/', include('agora.urls', namespace ='agora') )
 
 ]
 
