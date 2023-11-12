@@ -24,35 +24,7 @@ def send_email(request):
      
     return render(request, "users/sendemail.html")
     
-def sendemail(request):
-    if request.method == "POST":
-        to = request.POST.get('toemail')
-        content = request.POST.get('content')
-        send_mail(
-            #subject
-            "testing",
-            #message
-            content,
-            #from email
-            settings.EMAIL_HOST_USER,
-            #recipent list
-            [to]
-        )
-        return render(
-        request,
-        'users/sendemail.html',
-        {
-        'title':'send an email'
-        }
-    )
-    else:
-        return render(
-        request,
-        'users/sendemail.html',
-        {
-        'title':'send an email'
-        }
-    )
+
 # def login(request):
 #     if request.method == "POST":
 #         form = UserLoginForm(data=request.POST)

@@ -152,7 +152,7 @@ EMAIL_HOST_PASSWORD = 'gppkucodxvhhqist'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-DEFAULT_FROM_EMAIL = 'default from email'
+DEFAULT_FROM_EMAIL = 'bmmsuppo@gmail.com'
 
 
 CHANNEL_LAYERS = {
@@ -163,6 +163,5 @@ CHANNEL_LAYERS = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
-    "http://127.0.0.1:8000"
 ]
 

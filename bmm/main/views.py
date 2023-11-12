@@ -11,7 +11,28 @@ def index(request):
     return render(request,"main/project.html", context)
 
 def sendemail(request):
-    return render(
+    if request.method == "POST":
+        to = request.POST.get('toemail')
+        content = request.POST.get('content')
+        send_mail(
+            #subject
+            "testing",
+            #message
+            content,
+            #from email
+            settings.EMAIL_HOST_USER,
+            #recipent list
+            [to]
+        )
+        return render(
+        request,
+        'users/sendemail.html',
+        {
+        'title':'send an email'
+        }
+    )
+    else:
+        return render(
         request,
         'users/sendemail.html',
         {
