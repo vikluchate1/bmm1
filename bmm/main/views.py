@@ -14,9 +14,10 @@ def sendemail(request):
     if request.method == "POST":
         to = request.POST.get('toemail')
         content = request.POST.get('content')
+        subject = request.POST.get('fromemail')
         send_mail(
             #subject
-            "testing",
+            subject,
             #message
             content,
             #from email
