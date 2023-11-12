@@ -3,6 +3,9 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from .forms import UserRegistrationForm,UserLoginForm
 from django.contrib.auth import logout
+from django.shortcuts import render
+from django.core.mail import send_mail
+from django.conf import settings
 
 def auth(request):
     if request.method == "POST":
@@ -21,7 +24,35 @@ def send_email(request):
      
     return render(request, "users/sendemail.html")
     
-
+def sendemail(request):
+    if request.method == "POST":
+        to = request.POST.get('toemail')
+        content = request.POST.get('content')
+        send_mail(
+            #subject
+            "testing",
+            #message
+            content,
+            #from email
+            settings.EMAIL_HOST_USER,
+            #recipent list
+            [to]
+        )
+        return render(
+        request,
+        'users/sendemail.html',
+        {
+        'title':'send an email'
+        }
+    )
+    else:
+        return render(
+        request,
+        'users/sendemail.html',
+        {
+        'title':'send an email'
+        }
+    )
 # def login(request):
 #     if request.method == "POST":
 #         form = UserLoginForm(data=request.POST)
