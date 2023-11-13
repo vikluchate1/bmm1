@@ -7,5 +7,6 @@ urlpatterns = [
     # path('login/', login, name = 'login'),
     path('login/', UserLoginView.as_view(), name = 'login'),
     path('logout/', logout_view, name = 'logout'),
-    path('sendemail/', send_email, name='sendemail')
+    path('sendemail/', send_email, name='sendemail'),
+
 ]

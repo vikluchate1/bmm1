@@ -1,11 +1,12 @@
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from .forms import UserRegistrationForm,UserLoginForm
+from .forms import UserRegistrationForm, UserLoginForm
 from django.contrib.auth import logout
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
+
 
 def auth(request):
     if request.method == "POST":
@@ -20,10 +21,10 @@ def auth(request):
     }
     return render(request, "users/auth.html", context)
 
+
 def send_email(request):
-     
     return render(request, "users/sendemail.html")
-    
+
 
 # def login(request):
 #     if request.method == "POST":
@@ -47,6 +48,12 @@ class UserLoginView(LoginView):
     template_name = "users/login.html"
     redirect_authenticated_user = reverse_lazy('index')
 
+
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
+
+
+
+
+

@@ -1,22 +1,25 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{{title}}</title>
 </head>
-<body>
-    <h1>
-        Отправить письмо
-    </h1>
+<body >
+    <div class = "body-send">
+        
     <form action ="{% url 'email' %}" method="post">
         {% csrf_token %}
         <table>
+            <h2 id="send-email">
+                Отправить письмо
+            </h2>
             <tr>
 
                 <td>
-                    <input type="hidden" readonly name="toemail" value="bmmsuppo@gmail.com">
+                    <input type="hidden"  name="toemail" value="bmmsuppo@gmail.com">
                 </td>
             </tr>
             <tr>
@@ -26,20 +29,20 @@
             </tr>
             <tr>
                 <td colspan='2'>
-                    <textarea name="content" cols="30" rows="10"></textarea>
+                    <textarea name="content" cols="50" rows="10"></textarea>
 
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="submit" value="Send">
+                    <input type="submit" value="Отправить">
                 </td>
                 <td>
-                    <input type="reset" value="Clear">
+                    <input type="reset" value="Очистить">
                 </td>
             </tr>
         </table>
     </form>
-
+</div>
 </body>
 </html>

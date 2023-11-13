@@ -28,7 +28,7 @@
   </script>
   <body onload="init_api()">
     <header id = "main_bar"><img id = "logo" src="{% static 'logo/logo-medium-svgrepo-com.svg' %}">
-      <h1>BMMSUPPORT</h1>
+      <h1 id = "BMM-head">BMMSUPPORT</h1>
       {% if user.is_authenticated %}
       <p  id = "username-label">{{ user.username }}</p>
       <a class="btn btn-primary" href="{% url 'users:logout' %}" role="button">Выход</a>
@@ -113,7 +113,7 @@
   </div>
 
 
-
+  
 
   <footer class="mt-5 pt-5 pb-5 footer">
     <div class="container">

@@ -1,8 +1,10 @@
 from django.urls import path
 
-from bmm.users.views import send_email
+from bmm.users.views import send_email,sendanemail
 
 app_name = "main"
 urlpatterns = [
- path('sendemail/', send_email, name='sendemail')
+ path('sendemail/', send_email, name='sendemail'),
+
+
  ]
