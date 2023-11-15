@@ -3,6 +3,9 @@ from .models import InfoCard
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
+from django.core.exceptions import ValidationError
+
+import pyotp
 
 def index(request):
     context = {
@@ -54,4 +57,6 @@ def sendemail(request):
         'title':'send an email'
         }
     )
+
+
 

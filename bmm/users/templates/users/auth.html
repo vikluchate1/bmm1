@@ -40,7 +40,9 @@
           {{ form.password2 }}
         </div>
         <div class="mb-3">
-          <a href="{% url 'users:login' %}">Уже зарегистрированы? Войти</a>
+          <a href="{% url 'users:login' %}">Уже зарегистрированы? Войти</a><br><br>
+          <a href="{% url 'users:policy' %}">Политика обработки персональных данных</a>
+
         </div>
         <button type="submit" class="btn btn-primary" id = "submit">Регистрация</button>
       </form>
