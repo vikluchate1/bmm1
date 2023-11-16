@@ -1,4 +1,4 @@
-
+import users.models
 from .models import InfoCard
 from django.shortcuts import render
 from django.core.mail import send_mail
@@ -10,22 +10,21 @@ from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from ..users.models import UserIP
-from ..users.views import get_client_ip
+from users.models import UserIP
+from users.views import get_client_ip
 
 
 def index(request):
     context = {
         'cards': InfoCard.objects.all()
     }
-    if request.user and UserIP.objects.get(username=request.user.username):
-        if not (get_client_ip(request) == UserIP.objects.get(username=request.user.username).ip_address):
-            logout(request)
-            return HttpResponseRedirect(reverse("users:login"))
-
-
-
-
+    try:
+        if request.user and UserIP.objects.get(username=request.user.username):
+            if not (get_client_ip(request) == UserIP.objects.get(username=request.user.username).ip_address):
+                logout(request)
+                return HttpResponseRedirect(reverse("users:login"))
+    except users.models.UserIP.DoesNotExist:
+        pass
     return render(request,"main/project.html", context)
 
 

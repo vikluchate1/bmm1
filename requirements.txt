@@ -5,3 +5,5 @@ tzdata==2023.3
 Pillow==10.1.0
 python-dotenv==1.0.0
 pusher==3.3.2
+django-otp==1.3.0
+pyotp==2.9.0
