@@ -25,7 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('users/', include('users.urls', namespace='users')),
-    path('agora/', include('agora.urls', namespace='agora')),
     path('sendemail/', sendemail, name="email")
 
 ]

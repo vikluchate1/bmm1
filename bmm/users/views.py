@@ -6,6 +6,8 @@ from django.contrib.auth import logout
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
+from .models import UserIP
+
 
 
 def auth(request):
@@ -13,6 +15,8 @@ def auth(request):
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
             form.save()
+            ip = UserIP(username=request.POST['username'], ip_address=get_client_ip(request))
+            ip.save()
             return HttpResponseRedirect(reverse('users:login'))
     else:
         form = UserRegistrationForm()
@@ -21,6 +25,13 @@ def auth(request):
     }
     return render(request, "users/auth.html", context)
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[-1].strip()
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
 
 def send_email(request):
     return render(request, "users/sendemail.html")

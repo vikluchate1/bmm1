@@ -30,7 +30,7 @@
     <header id = "main_bar"><img id = "logo" src="{% static 'logo/logo-medium-svgrepo-com.svg' %}">
       <h1 id = "BMM-head">BMMSUPPORT</h1>
       {% if user.is_authenticated %}
-      <p  id = "username-label">{{ user.username }}</p>
+      <p  id = "username-label">{{ user.username }} {{ user_ip }}</p>
       <a class="btn btn-primary" href="{% url 'users:logout' %}" role="button">Выход</a>
       {% else %}
       <a class="btn btn-primary" href="{% url 'users:login' %}" role="button">Вход</a>

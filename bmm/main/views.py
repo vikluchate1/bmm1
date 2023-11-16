@@ -4,14 +4,30 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
 from django.core.exceptions import ValidationError
-
+from users.models import UserIP
+from django.contrib.auth.models import User
+from users.views import get_client_ip
 import pyotp
+from django.contrib.auth import logout
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 
 def index(request):
     context = {
         'cards': InfoCard.objects.all()
     }
+    if request.user and UserIP.objects.get(username=request.user.username):
+        if not (get_client_ip(request) == UserIP.objects.get(username=request.user.username).ip_address):
+            logout(request)
+            return HttpResponseRedirect(reverse("users:login"))
+
+
+
+
     return render(request,"main/project.html", context)
+
+
 
 def sendemail(request):
     if request.method == "POST":
