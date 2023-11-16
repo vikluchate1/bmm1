@@ -22,6 +22,7 @@
         </button>
     </div>
     {% endif %}
+   
     <form action="{% url 'users:login' %}" method="POST">
         {% csrf_token %}
         <div class="mb-3">
@@ -33,7 +34,7 @@
            {{ form.password }}
         </div>
         <div class="mb-3">
-          <a href="{% url 'users:auth' %}">Нет учётной записи? Зарегистрироваться</a>
+          <!-- <a href="{% url 'users:auth' %}">Нет учётной записи? Зарегистрироваться</a> -->
         </div>
         <button type="submit" class="btn btn-primary" id = "submit">Вход</button>
       </form>

@@ -24,8 +24,9 @@ def index(request):
                 logout(request)
                 return HttpResponseRedirect(reverse("users:login"))
     except users.models.UserIP.DoesNotExist:
-        pass
-    return render(request,"main/project.html", context)
+        logout(request)
+        return HttpResponseRedirect(reverse("users:login"))
+    return render(request,"main/project.html", context) 
 
 
 
