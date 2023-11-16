@@ -4,13 +4,14 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from users.models import UserIP
 from django.contrib.auth.models import User
-from users.views import get_client_ip
 import pyotp
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+
+from ..users.models import UserIP
+from ..users.views import get_client_ip
 
 
 def index(request):
