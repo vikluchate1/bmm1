@@ -9,9 +9,10 @@ import pyotp
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+from .models import MailLogs
 from users.models import UserIP
 from users.views import get_client_ip
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -29,15 +30,17 @@ def index(request):
     return render(request,"main/project.html", context) 
 
 
-
+@login_required
 def sendemail(request):
     if request.method == "POST":
         to = request.POST.get('toemail')
         content = request.POST.get('content')
         subject = request.POST.get('fromemail')
-        to1 = request.POST.get("fromemail")
-        content1 = "Здравствуйте, Ваша заявка находится в обработке, в скором времени с Вами свяжутся"
-        subject1 = "Заявка на сайте BMMSUPPORT"
+        to_customer = request.POST.get("fromemail")
+        content_customer = "Здравствуйте, Ваша заявка находится в обработке, в скором времени с Вами свяжутся"
+        subject_customer = "Заявка на сайте BMMSUPPORT"
+        mail_log = MailLogs(content=content,email_address=subject)
+        mail_log.save()
         send_mail(
             #subject
             subject,
@@ -50,13 +53,13 @@ def sendemail(request):
         )
         send_mail(
             #subject
-            subject1,
+            subject_customer,
             #message
-            content1,
+            content_customer,
             #from email
             settings.EMAIL_HOST_USER,
             #recipent list
-            [to1]
+            [to_customer]
         )
 
         return render(
