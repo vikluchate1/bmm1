@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from main.views import index
+from main.views import sendemail
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -24,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('users/', include('users.urls', namespace='users')),
-    path('agora/', include('agora.urls', namespace='agora'))
+    path('sendemail/', sendemail, name="email")
 
 ]
 

@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-m!xz=v&#ar@2+=@evc&3-wo5@^@djf)_7c@@1w1ea_vcr4^0nq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -41,9 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'main',
-    'agora',
+    'django_otp',
+    'django_otp.plugins.otp_totp'
+
     
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,7 +56,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_otp.middleware.OTPMiddleware'
+
 ]
+
+
 
 ROOT_URLCONF = 'bmm.urls'
 
@@ -139,13 +146,20 @@ LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp-relay.sendinblue.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'bmmsuppo@gmail.com'
-EMAIL_HOST_PASSWORD = 'Cbtax8XS907qLr3K'
+EMAIL_HOST_PASSWORD = 'gppkucodxvhhqist'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'default from email'
+EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = 'bmmsuppo@gmail.com'
 
 
 CHANNEL_LAYERS = {
@@ -156,5 +170,5 @@ CHANNEL_LAYERS = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
-    "http://127.0.0.1:8000"
 ]
+

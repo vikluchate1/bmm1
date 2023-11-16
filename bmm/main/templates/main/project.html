@@ -28,9 +28,9 @@
   </script>
   <body onload="init_api()">
     <header id = "main_bar"><img id = "logo" src="{% static 'logo/logo-medium-svgrepo-com.svg' %}">
-      <h1>BMMSUPPORT</h1>
+      <h1 id = "BMM-head">BMMSUPPORT</h1>
       {% if user.is_authenticated %}
-      <p  id = "username-label">{{ user.username }}</p>
+      <p  id = "username-label">{{ user.username }} {{ user_ip }}</p>
       <a class="btn btn-primary" href="{% url 'users:logout' %}" role="button">Выход</a>
       {% else %}
       <a class="btn btn-primary" href="{% url 'users:login' %}" role="button">Вход</a>
@@ -113,26 +113,20 @@
   </div>
 
 
-  <div class = "web-call">
-    <iframe 
-    src="https://vconf.edgecenter.ru/call/?roomId=serv0testroom123"
-    allow="camera;microphone;fullscreen;display-capture;screen-wake-lock"
-    ></iframe>
-    
-  </div>
-  <a id = "callus" href="{% url 'users:sendemail' %}"><h6>Позвоните нам</h6></a>
+  
+
   <footer class="mt-5 pt-5 pb-5 footer">
     <div class="container">
       <div class="row">
         <div class="col-lg-5 col-xs-12 about-company">
           <h2 class="about">О нас</h2>
-          <p class="pr-5 text-white-50">Компания с 0-ти летним опытом </p>
+          <p class="pr-5 text-white-50">Компания с 30-ти летним опытом </p>
           <p><a href="#"><i class="fa fa-facebook-square mr-1"></i></a><a href="#"><i class="fa fa-linkedin-square"></i></a></p>
         </div>
         <div class="col-lg-3 col-xs-12 links">
           <h4 class="mt-lg-0 mt-sm-3 about">Ссылки</h4>
             <ul class="m-0 p-0">
-              <li>- <a href="#">VK</a></li>
+              <li>- <a href="{% url 'users:sendemail' %}">НАПИСАТЬ ПИСЬМО</a></li>
               <li>- <a href="#">FACEBOOK</a></li>
               <li>- <a href="#">INSTAGRAMM</a></li>
             </ul>
@@ -141,7 +135,7 @@
           <h4 class="mt-lg-0 mt-sm-4 about" >Адрес</h4>
           <p class="about">4-й Вешняковский проезд, дом 4, строение 1</p>
           <p class="mb-0 about" class="about" ><i class="fa fa-phone mr-3"></i>8 (541) 754-3010</p>
-          <p class = "about"><i class="fa fa-envelope-o mr-3 about" ></i>info@hsdf.com</p>
+          <p class = "about"><i class="fa fa-envelope-o mr-3 about" ></i>bmmsuppo@gmail.com</p>
         </div>
       </div>
       <div class="row mt-5">
