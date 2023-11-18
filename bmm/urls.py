@@ -20,14 +20,17 @@ from main.views import index
 from main.views import sendemail
 from django.conf import settings
 from django.conf.urls.static import static
+import django.views.static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('users/', include('users.urls', namespace='users')),
-    path('sendemail/', sendemail, name="email")
+    path('sendemail/', sendemail, name="email"),
+
 
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

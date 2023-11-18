@@ -25,7 +25,7 @@ dotenv.load_dotenv()
 SECRET_KEY = 'django-insecure-m!xz=v&#ar@2+=@evc&3-wo5@^@djf)_7c@@1w1ea_vcr4^0nq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -171,4 +171,3 @@ CHANNEL_LAYERS = {
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
 ]
-

@@ -66,6 +66,7 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("index"))
 
 
-
+def policy(request):
+    return render(request, "users/policy.html")
 
 
